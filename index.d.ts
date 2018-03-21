@@ -1,53 +1,62 @@
-import * as Prefixer from 'inline-style-prefixer';
 import * as React from 'react';
 
-export type Size = string | number;
-
-export interface Props {
+export interface SplitPaneProps {
     allowResize?: boolean;
     className?: string;
-    primary?: 'first' | 'second';
-    minSize?: Size;
-    maxSize?: Size;
-    defaultSize?: Size;
-    size?: Size;
     split?: 'vertical' | 'horizontal';
-    onDragStarted?: () => void;
-    onDragFinished?: () => void;
-    onChange?: (newSize: number) => void;
-    onResizerClick?: (event: MouseEvent) => void;
-    onResizerDoubleClick?: (event: MouseEvent) => void;
-    prefixer?: Prefixer;
-    style?: React.CSSProperties;
-    resizerStyle?: React.CSSProperties;
-    paneStyle?: React.CSSProperties;
-    pane1Style?: React.CSSProperties;
-    pane2Style?: React.CSSProperties;
-    resizerClassName?: string;
-    step?: number;
+    resizerSize?: number;
 }
 
-export interface State {
-    active: boolean;
+export interface SplitPaneState {
+    useInitial: boolean;
     resized: boolean;
+    active: boolean;
+    dimensions: number[];
+    sizes: number[];
+    ratios: number[];
 }
 
-declare class SplitPane extends React.Component<Props, State> {
+declare class SplitPane extends React.Component<SplitPaneProps, SplitPaneState> {
     constructor();
 
     onMouseDown(event: MouseEvent): void;
-    
-    onTouchStart(event: TouchEvent): void;
-
     onMouseMove(event: MouseEvent): void;
-
+    onMouseUp(event: MouseEvent): void;
+    onTouchStart(event: TouchEvent): void;
     onTouchMove(event: TouchEvent): void;
+    onMove(event: TouchEvent): void;
+    onDown(event: TouchEvent): void;
+    calculateSize(): void;
+    resize(): void;
 
-    onMouseUp(): void;
-
-    setSize(props: Props, state: State): void;
-
-    static defaultProps: Props;
+    static defaultProps: SplitPaneProps;
 }
 
-export { SplitPane as default };
+interface PaneProps {
+  className?: string
+  initialSize?: number
+  minSize?: number
+  maxSize?: number
+}
+
+declare class Pane extends React.PureComponent<PaneProps> {
+  constructor();
+
+  static defaultProps: PaneProps;
+}
+
+interface ResizerProps {
+  index: number
+  split?: 'horizontal' | 'vertical'
+  onClick?: (event: MouseEvent) => void;
+  onDoubleClick?: (event: MouseEvent) => void;
+  onMouseDown?: (event: MouseEvent) => void;
+  onTouchEnd?: (event: MouseEvent) => void;
+  onTouchStart?: (event: MouseEvent) => void;
+}
+
+declare class Resizer extends React.Component<ResizerProps> {
+  static defaultProps: ResizerProps;
+}
+
+export { SplitPane, Pane, Resizer };
