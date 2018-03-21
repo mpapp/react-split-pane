@@ -35,8 +35,8 @@ declare class SplitPane extends React.Component<SplitPaneProps, SplitPaneState> 
 interface PaneProps {
   className?: string
   initialSize?: number
-  minSize?: number
-  maxSize?: number
+  minSize?: string
+  maxSize?: string
 }
 
 declare class Pane extends React.PureComponent<PaneProps> {
