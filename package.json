@@ -26,10 +26,7 @@
     "glamorous": "^4.11.2",
     "inline-style-prefixer": "^4.0.0",
     "normalize.css": "^7.0.0",
-    "styled-components": "^2.4.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "styled-components": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -56,6 +53,11 @@
     "@storybook/react": "^3.3.3",
     "@storybook/addon-actions": "^3.3.3",
     "@storybook/addon-links": "^3.3.3"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "scripts": {
     "compile": "babel -d lib/ src/",
