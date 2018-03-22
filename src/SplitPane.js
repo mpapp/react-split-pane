@@ -1,4 +1,4 @@
-import React, { Component, cloneElement } from 'react';
+import React from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -65,7 +65,7 @@ const toPx = (value, unit = 'px', size) => {
   }
 };
 
-class SplitPane extends Component {
+class SplitPane extends React.Component {
   constructor(props) {
     super(props);
     log(`constructor`);
@@ -337,7 +337,7 @@ class SplitPane extends Component {
       };
       if (isPane) {
         log(`clone Pane`);
-        pane = cloneElement(child, paneProps);
+        pane = React.cloneElement(child, paneProps);
       } else {
         log(`wrap with Pane`);
         pane = <Pane {...paneProps}>{child}</Pane>;

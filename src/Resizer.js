@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -53,7 +53,7 @@ const VerticalWrapper = styled(Wrapper)`
   }
 `;
 
-class Resizer extends Component {
+class Resizer extends React.Component {
   render() {
     const {
       index,

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import prefixAll from 'inline-style-prefixer/static';
@@ -34,7 +34,7 @@ const ColumnFlex = ({ ratio, minSize, maxSize }) => ({
 });
 
 
-class Pane extends PureComponent {
+class Pane extends React.Component {
   render() {
     const {
       children,
