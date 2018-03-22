@@ -362,29 +362,18 @@ class SplitPane extends React.Component {
       }
     }, []);
 
-    if (split === 'vertical') {
-      return (
-        <RowContainer
-          className={className}
-          data-type="SplitPane"
-          data-split={split}
-          ref={splitPane => (this.splitPane = splitPane)}
-        >
-          {elements}
-        </RowContainer>
-      );
-    } else {
-      return (
-        <ColumnContainer
-          className={className}
-          data-type="SplitPane"
-          data-split={split}
-          ref={splitPane => (this.splitPane = splitPane)}
-        >
-          {elements}
-        </ColumnContainer>
-      );
-    }
+    const Container = split === 'vertical' ? RowContainer : ColumnContainer
+
+    return (
+      <Container
+        className={className}
+        data-type="SplitPane"
+        data-split={split}
+        ref={splitPane => (this.splitPane = splitPane)}
+      >
+        {elements}
+      </Container>
+    )
   }
 }
 
