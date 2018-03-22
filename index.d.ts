@@ -37,6 +37,8 @@ interface PaneProps {
   initialSize?: string
   minSize?: string
   maxSize?: string
+  resized?: boolean
+  useInitial?: boolean
 }
 
 declare class Pane extends React.PureComponent<PaneProps> {

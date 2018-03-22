@@ -74,6 +74,8 @@ Pane.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   initialSize: PropTypes.string,
+  resized: PropTypes.bool,
+  useInitial: PropTypes.bool,
   minSize: PropTypes.string,
   maxSize: PropTypes.string,
 };
@@ -82,6 +84,8 @@ Pane.defaultProps = {
   split: 'vertical',
   minSize: '0px',
   maxSize: '100%',
+  resized: false,
+  useInitial: true,
 };
 
 export default Pane;
