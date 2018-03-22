@@ -11,9 +11,17 @@ const Wrapper = styled.div`
   :hover {
     transition: all 2s ease;
   }
+  
+  .disabled {
+    cursor: not-allowed;
+  }
+  
+  .disabled:hover {
+    border-color: transparent;
+  }
 `;
 
-const HorizontalWrapper = styled(Wrapper)`
+const HorizontalWrapper = Wrapper.extend`
   height: 11px;
   margin: -5px 0;
   border-top: 5px solid rgba(255, 255, 255, 0);
@@ -25,16 +33,9 @@ const HorizontalWrapper = styled(Wrapper)`
     border-top: 5px solid rgba(0, 0, 0, 0.5);
     border-bottom: 5px solid rgba(0, 0, 0, 0.5);
   }
-
-  .disabled {
-    cursor: not-allowed;
-  }
-  .disabled:hover {
-    border-color: transparent;
-  }
 `;
 
-const VerticalWrapper = styled(Wrapper)`
+const VerticalWrapper = Wrapper.extend`
   width: 11px;
   margin: 0 -5px;
   border-left: 5px solid rgba(255, 255, 255, 0);
@@ -44,12 +45,6 @@ const VerticalWrapper = styled(Wrapper)`
   :hover {
     border-left: 5px solid rgba(0, 0, 0, 0.5);
     border-right: 5px solid rgba(0, 0, 0, 0.5);
-  }
-  .disabled {
-    cursor: not-allowed;
-  }
-  .disabled:hover {
-    border-color: transparent;
   }
 `;
 
