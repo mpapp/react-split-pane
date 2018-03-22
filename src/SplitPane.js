@@ -1,8 +1,7 @@
 import React, { Component, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 import Resizer from './Resizer';
 import Pane from './Pane';
 
@@ -12,29 +11,24 @@ const log = (...args) => {
   if (debug) console.log(...['SplitPane', ...args]);
 };
 
-const ColumnStyle = glamorous.div({
-  display: 'flex',
-  flex: 1,
-  height: '100%',
-  outline: 'none',
-  overflow: 'hidden',
-  userSelect: 'text',
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100%;
+  outline: none;
+  overflow: hidden;
+  user-select: text;
+`
 
-  flexDirection: 'column',
-  minHeight: '100%',
-  width: '100%',
-});
+const ColumnContainer = Container.extend`
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+`
 
-const RowStyle = glamorous.div({
-  display: 'flex',
-  flex: 1,
-  height: '100%',
-  outline: 'none',
-  overflow: 'hidden',
-  userSelect: 'text',
-
-  flexDirection: 'row',
-});
+const RowContainer = Container.extend`
+  flex-direction: row;
+`
 
 const paneSize = (split, dimensions, splitPaneDimensions) => {
   //console.log(`paneSize:`, split, dimensions, splitPaneDimensions);
@@ -370,25 +364,25 @@ class SplitPane extends Component {
 
     if (split === 'vertical') {
       return (
-        <RowStyle
+        <RowContainer
           className={className}
           data-type="SplitPane"
           data-split={split}
           ref={splitPane => (this.splitPane = splitPane)}
         >
           {elements}
-        </RowStyle>
+        </RowContainer>
       );
     } else {
       return (
-        <ColumnStyle
+        <ColumnContainer
           className={className}
           data-type="SplitPane"
           data-split={split}
           ref={splitPane => (this.splitPane = splitPane)}
         >
           {elements}
-        </ColumnStyle>
+        </ColumnContainer>
       );
     }
   }
